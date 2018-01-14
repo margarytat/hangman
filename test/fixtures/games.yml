@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  word: MyString
+  user_won: false
+  num_wrong_guesses: 1
+
+two:
+  user: two
+  word: MyString
+  user_won: false
+  num_wrong_guesses: 1

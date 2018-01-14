@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180113055152) do
+ActiveRecord::Schema.define(version: 20180114161415) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "games", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "word"
+    t.boolean "user_won"
+    t.integer "num_wrong_guesses"
+    t.index ["user_id"], name: "index_games_on_user_id"
+    t.index ["word"], name: "index_games_on_word"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -32,4 +41,5 @@ ActiveRecord::Schema.define(version: 20180113055152) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "games", "users"
 end
