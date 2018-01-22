@@ -1,5 +1,7 @@
 <h2>Games</h2>
 
+<!-- display 10 most recent games and stats (overall win percentage, top players) -->
+
 <table>
   <thead>
     <tr>
@@ -14,13 +16,16 @@
   <tbody>
     <% @games.each do |game| %>
       <tr>
-        <td><%= game.user %></td>
+        <% user = game.user %>
+        <% if user == nil%>
+        <% user = 'Guest' %>
+        <% end %>
+        <td><%= user %></td>
         <td><%= game.word %></td>
         <td><%= game.user_won %></td>
-        <td><%= game.num_wrong_guesses %></td>
+        <td><%= (Game.MAX_NUM_WRONG_GUESSES - game.num_wrong_guesses_remaining) %></td>
         <td><%= link_to 'Show', game %></td>
         <td><%= link_to 'Edit', edit_game_path(game) %></td>
-        <td><%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -29,3 +34,4 @@
 <br>
 
 <%= link_to 'New Game', new_game_path %>
+

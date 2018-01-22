@@ -19,7 +19,9 @@ ActiveRecord::Schema.define(version: 20180114161415) do
     t.bigint "user_id"
     t.string "word"
     t.boolean "user_won"
-    t.integer "num_wrong_guesses"
+    t.integer "num_wrong_guesses_remaining"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_games_on_user_id"
     t.index ["word"], name: "index_games_on_word"
   end

@@ -1,7 +1,14 @@
 Rails.application.routes.draw do
-  resources :games
   devise_for :users
 
-  root 'games#index'
+  resources :games do 
+  end
+
+  resource :word_sets do 
+  end
+
+  # get "upload_words", to "upload_words"
+
+  root 'games#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

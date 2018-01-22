@@ -4,7 +4,8 @@ class CreateGames < ActiveRecord::Migration[5.1]
       t.references :user, foreign_key: true
       t.string :word
       t.boolean :user_won
-      t.integer :num_wrong_guesses
+      t.integer :num_wrong_guesses_remaining
+      t.timestamps
     end
     add_index :games, :word
   end
