@@ -14,7 +14,7 @@
   <tbody>
     <% @games.each do |game| %>
       <tr>
-        <td><%= display_user_name(game.user) %></td>
+        <td><%= get_user_name(game.user) %></td>
         <td><%= game.word %></td>
         <td><%= game.user_won %></td>
         <td><%= (Game.MAX_NUM_WRONG_GUESSES - game.num_wrong_guesses_remaining) %></td>

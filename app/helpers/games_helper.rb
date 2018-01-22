@@ -1,9 +1,16 @@
 module GamesHelper
-  def display_user_name(user)
-    name = "Guest"
-    if user != nil
-      name = user.email
+  def get_user_name(user)
+    if user 
+      return user.email
     end
-    return name
+    return "Guest"
+  end
+
+  def get_hidden_tag_w_user_id
+    if current_user
+      hidden_field_tag :user_id, current_user.id
+    else
+      hidden_field_tag :user_id, nil
+    end
   end
 end

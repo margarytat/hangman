@@ -1,3 +1,5 @@
+
+
 class Game < ApplicationRecord
   belongs_to :user, optional: true
   #  when user closes account, there are 2 options for their games:
@@ -7,4 +9,10 @@ class Game < ApplicationRecord
   def self.MAX_NUM_WRONG_GUESSES 
     10
   end
+
+  def initialize
+    super
+    self.word = ::Services::WordProvider.random_word
+  end
+
 end
