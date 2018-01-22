@@ -1,6 +1,6 @@
 <p>
   <strong>User:</strong>
-  <%= @game.user %>
+  <%= display_user_name(@game.user) %>
 </p>
 
 <p>
@@ -14,8 +14,8 @@
 </p>
 
 <p>
-  <strong>Num wrong guesses:</strong>
-  <%= @game.num_wrong_guesses %>
+  <strong>Num wrong guesses remaining:</strong>
+  <%= @game.num_wrong_guesses_remaining %>
 </p>
 
 <%= link_to 'Edit', edit_game_path(@game) %> |

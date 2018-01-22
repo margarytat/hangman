@@ -1,6 +1,6 @@
 <h2>Games</h2>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>User</th>
@@ -14,10 +14,10 @@
   <tbody>
     <% @games.each do |game| %>
       <tr>
-        <td><%= game.user %></td>
+        <td><%= display_user_name(game.user) %></td>
         <td><%= game.word %></td>
         <td><%= game.user_won %></td>
-        <td><%= game.num_wrong_guesses %></td>
+        <td><%= (Game.MAX_NUM_WRONG_GUESSES - game.num_wrong_guesses_remaining) %></td>
         <td><%= link_to 'Show', game %></td>
         <td><%= link_to 'Edit', edit_game_path(game) %></td>
         <td><%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %></td>

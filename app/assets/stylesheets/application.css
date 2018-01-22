@@ -14,6 +14,15 @@
  *= require_self
  */
 
- .alert {
+ .alert, .page-content {
 	margin-top: 25px;
+}
+
+@media (max-width: 480px) {
+	body {
+	min-width: 100%;
+	margin-left: 0px;
+	margin-right: 0px;
+	}
+
 }
