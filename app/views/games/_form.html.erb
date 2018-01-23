@@ -1,31 +1,14 @@
 <%= form_with url: games_path do |form| %>
-  <% if game.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(game.errors.count, "error") %> prohibited this game from being saved:</h2>
-
-      <ul>
-      <% game.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
 
   <div class="field">
     <%= get_hidden_tag_w_user_id %>
   </div>
 
-  <div class="field">
-    <%= form.label :user_won %>
-    <%= form.check_box :user_won, id: :game_user_won %>
-  </div>
+  <div class="game-caption">
+    <%= label_tag "caption", "Play as #{get_user_name(current_user)}" %>
+  <div>
 
-  <div class="field">
-    <%= form.label :num_wrong_guesses_remaining %>
-    <%= form.number_field :num_wrong_guesses_remaining, id: :game_num_wrong_guesses_remaining %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+  <div class="actions game-caption">
+    <input type="submit" value="Start">
   </div>
 <% end %>

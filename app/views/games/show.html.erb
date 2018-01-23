@@ -9,12 +9,12 @@
 </p>
 
 <p>
-  <strong>User won:</strong>
-  <%= @game.user_won %>
+  <%= get_hangman_image(@game.num_wrong_guesses_remaining) %>
 </p>
 
+
 <p>
-  <strong>Num wrong guesses remaining:</strong>
+  <strong>Number of guesses remaining:</strong>
   <%= @game.num_wrong_guesses_remaining %>
 </p>
 

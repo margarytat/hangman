@@ -13,4 +13,10 @@ module GamesHelper
       hidden_field_tag :user_id, nil
     end
   end
+
+  def get_hangman_image(num)
+    if num < Game.MAX_NUM_WRONG_GUESSES
+      image_tag asset_path("h_#{num}.png"), class: "img-responsive center-block"
+    end
+  end
 end

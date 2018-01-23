@@ -12,7 +12,7 @@ class Game < ApplicationRecord
 
   def initialize
     super
-    self.word = ::Services::WordProvider.random_word
+    self.word = ::Services::WordProvider.random_word[0]
   end
 
 end

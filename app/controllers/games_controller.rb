@@ -14,7 +14,6 @@ class GamesController < ApplicationController
 
   # GET /games/new
   def new
-    @game = Game.new
   end
 
   # GET /games/1/edit
@@ -26,8 +25,7 @@ class GamesController < ApplicationController
   def create
     @game = Game.new
     @game.user_id = params[:user_id]
-    @game.user_won = params[:user_won]
-    @game.num_wrong_guesses_remaining = params[:num_wrong_guesses_remaining]
+    @game.num_wrong_guesses_remaining = Game.MAX_NUM_WRONG_GUESSES
 
     respond_to do |format|
       if @game.save
@@ -72,6 +70,6 @@ class GamesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def game_params
-      params.permit(:id, :user_id, :user_won, :num_wrong_guesses_remaining)
+      params.permit(:id, :user_id, :guess)
     end
 end

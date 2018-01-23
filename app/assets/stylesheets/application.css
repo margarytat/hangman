@@ -14,8 +14,19 @@
  *= require_self
  */
 
+ body {
+	font-family: 'Roboto', sans-serif;
+	font-size: medium;
+}
+
  .alert, .page-content {
 	margin-top: 25px;
+}
+
+.game-caption {
+	margin-top: 20px;
+	margin-bottom: 20px;
+
 }
 
 @media (max-width: 480px) {
