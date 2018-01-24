@@ -26,7 +26,7 @@ class Game < ApplicationRecord
 
       num_hidden_letters = 0
       self.word.downcase.each_char do |c| 
-        if (c.to_s.match /[a-zA-Z]/ ) && (self.current_guesses.include? c.to_s.downcase)
+        if (c.to_s.match /[a-zA-Z]/ ) && (!self.current_guesses.include? c.to_s.downcase)
           num_hidden_letters += 1
         end
       end
