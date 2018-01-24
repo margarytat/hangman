@@ -40,6 +40,19 @@ module GamesHelper
     end
   end
 
+  def get_game_over_banner 
+    if @game.user_won != nil 
+      extra_class = "user-lost-banner"
+      caption = "You lost!"
+      if @game.user_won == true 
+        extra_class = "user-won-banner"
+        caption = "You won!"
+      end
+
+      content_tag :div, caption, class: "container-fluid game-over-banner #{extra_class}"
+    end
+  end
+
   private
 
   def get_keyboard_row( labels)

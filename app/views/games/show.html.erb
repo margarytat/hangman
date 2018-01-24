@@ -1,8 +1,10 @@
-<div class="game-caption">
-  Word:
-</div>
 <div class="container-fluid game-caption">
-  <%= get_word_chars_display %>
+  <div class="panel panel-default">
+    <div class="panel-heading">Word:</div>
+    <div class="panel-body">
+      <%= get_word_chars_display %>
+    </div>
+  </div>
 </div>
 
 <div class="container-fluid game-caption">
@@ -13,9 +15,12 @@
   <%= get_hangman_image(@game.num_wrong_guesses_remaining) %>
 </div>
 
-<%= get_keyboard %>
+<% if @game.user_won == nil %>
+  <%= get_keyboard %>
+<% else %>
+  <%= get_game_over_banner %>
+<% end %>
 
 <div class="container-fluid link-row">
-  <%= link_to 'Edit', edit_game_path(@game) %> |
   <%= link_to 'Back', games_path %>
 </div>
