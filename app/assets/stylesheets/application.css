@@ -32,6 +32,10 @@
 	margin-top: 50px;
 }
 
+.key-row {
+	margin-top: 10px;
+}
+
 .game-over-banner {
 	font-size: large;
 	text-align: center;
@@ -45,6 +49,14 @@
 .user-lost-banner {
 	color: red;
 	background-color: white;
+}
+
+.word-letter {
+	font-size: large;
+	padding-top: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	text-align: center;
 }
 
 @media (max-width: 480px) {

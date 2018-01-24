@@ -5,6 +5,9 @@ class Game < ApplicationRecord
   # 1. set the user to null or keep existing user id and when the user is not found, display "guest" instead
   # 2. we don't delete rows in the users table, just deactivate them. former users can be or not be included in statistics
 
+  validates :word, presence: true
+  validates :num_wrong_guesses_remaining, presence: true
+  
   def self.MAX_NUM_WRONG_GUESSES 
     10
   end

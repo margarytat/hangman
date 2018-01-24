@@ -17,11 +17,11 @@ module GamesHelper
   def get_word_chars_display
     content_tag :div, class: "row " do 
       @game.word.each_char do |c|
+        lbl = "_"
         if (c.to_s.match /[^a-zA-Z]/ ) || (@game.current_guesses.include? c.to_s.downcase)
-          concat (content_tag :div, c.to_s,  class: "col-xs-1") 
-        else
-          concat (content_tag :div, "_",  class: "col-xs-1")
+          lbl = c.to_s
         end
+        concat (content_tag :div, lbl,  class: "col-sm-1 word-letter")
       end
     end
   end
@@ -56,7 +56,7 @@ module GamesHelper
   private
 
   def get_keyboard_row( labels)
-    content_tag :div, class: "row" do
+    content_tag :div, class: "row key-row" do
       labels.each do |i|
         concat (get_button_cell(i.to_s))
       end
