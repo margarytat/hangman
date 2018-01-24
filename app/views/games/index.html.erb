@@ -18,9 +18,8 @@
         <td><%= game.word unless game.user_won == nil %></td>
         <td><%= game.user_won %></td>
         <td><%= (Game.MAX_NUM_WRONG_GUESSES - game.num_wrong_guesses_remaining) %></td>
-        <td><%= link_to 'Show', game %></td>
-        <% if (current_user && game.user == current_user) || (current_user == nil) %>
-          <td><%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if (game.user_won != nil) || (current_user && game.user == current_user) %>
+        <td><%= link_to 'Show', game %></td> 
         <% end %>
       </tr>
     <% end %>
