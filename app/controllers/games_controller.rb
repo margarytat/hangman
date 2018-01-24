@@ -28,8 +28,9 @@ class GamesController < ApplicationController
     @game.num_wrong_guesses_remaining = Game.MAX_NUM_WRONG_GUESSES
 
     respond_to do |format|
+
       if @game.save
-        format.html { redirect_to @game, notice: 'Game was successfully created.' }
+        format.html { redirect_to @game }
         format.json { render :show, status: :created, location: @game }
       else
         format.html { render :new }
@@ -41,9 +42,11 @@ class GamesController < ApplicationController
   # PATCH/PUT /games/1
   # PATCH/PUT /games/1.json
   def update
+
+    @game.process_guess(params[:guess])
     respond_to do |format|
-      if @game.update(game_params)
-        format.html { redirect_to @game, notice: 'Game was successfully updated.' }
+      if @game.save
+        format.html { redirect_to @game}
         format.json { render :show, status: :ok, location: @game }
       else
         format.html { render :edit }
@@ -70,6 +73,6 @@ class GamesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def game_params
-      params.permit(:id, :user_id, :guess)
+      params.permit(:id, :user_id, :guess, :authenticity_token, :_method)
     end
 end

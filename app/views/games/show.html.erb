@@ -1,22 +1,21 @@
-<p>
-  <strong>User:</strong>
-  <%= get_user_name(@game.user) %>
-</p>
+<div class="game-caption">
+  Word:
+</div>
+<div class="container-fluid game-caption">
+  <%= get_word_chars_display %>
+</div>
 
-<p>
-  <strong>Word:</strong>
-  <%= @game.word %>
-</p>
+<div class="container-fluid game-caption">
+  Number of guesses remaining: <%= @game.num_wrong_guesses_remaining %>
+</div>
 
-<p>
+<div class="container-fluid game-caption">
   <%= get_hangman_image(@game.num_wrong_guesses_remaining) %>
-</p>
+</div>
 
+<%= get_keyboard %>
 
-<p>
-  <strong>Number of guesses remaining:</strong>
-  <%= @game.num_wrong_guesses_remaining %>
-</p>
-
-<%= link_to 'Edit', edit_game_path(@game) %> |
-<%= link_to 'Back', games_path %>
+<div class="container-fluid link-row">
+  <%= link_to 'Edit', edit_game_path(@game) %> |
+  <%= link_to 'Back', games_path %>
+</div>

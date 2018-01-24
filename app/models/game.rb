@@ -1,5 +1,4 @@
 
-
 class Game < ApplicationRecord
   belongs_to :user, optional: true
   #  when user closes account, there are 2 options for their games:
@@ -12,7 +11,18 @@ class Game < ApplicationRecord
 
   def initialize
     super
-    self.word = ::Services::WordProvider.random_word[0]
+    self.word = ::Services::WordProvider.random_word[0].downcase
+  end
+
+  def process_guess(guess) 
+    # ignore duplicate guesses
+    if !self.current_guesses.include? guess.to_s.downcase
+      self.current_guesses.push(guess.to_s.downcase)
+      if !self.word.downcase.include? guess.to_s.downcase
+        self.num_wrong_guesses_remaining -= 1
+      end
+    end
+
   end
 
 end

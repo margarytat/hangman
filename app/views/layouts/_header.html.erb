@@ -13,6 +13,7 @@
       <div class="collapse navbar-collapse" id="menu-options">
         <ul class="nav navbar-nav navbar-right"> 
         <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to 'New Game', new_game_path %></li>
           <% if user_signed_in? %>
             <li><%= link_to "Account Settings", edit_user_registration_path %></li>
             <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>

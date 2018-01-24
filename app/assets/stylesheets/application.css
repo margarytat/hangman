@@ -29,6 +29,11 @@
 
 }
 
+.link-row {
+	margin-top: 50px;
+}
+
+
 @media (max-width: 480px) {
 	body {
 	min-width: 100%;
