@@ -1,28 +1,36 @@
-<div class="container-fluid game-caption">
-  <div class="panel panel-default">
-    <div class="panel-body">
-      Word:
-      <div class="container page-content">
-        <%= get_word_chars_display %>
+ <% if (@game.user_won == nil) && (!current_user || @game.user != current_user)  %> 
+
+  <div class="alert alert-danger fade in">
+      <a href="#" class="close" data-dismiss="alert">&times;</a>
+      You are not allowed to finish other users' games!
+  </div>
+ <% else %>
+  <div class="container-fluid game-caption">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        Word:
+        <div class="container page-content">
+          <%= get_word_chars_display %>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<div class="container-fluid game-caption">
-  Number of guesses remaining: <%= @game.num_wrong_guesses_remaining %>
-</div>
+  <div class="container-fluid game-caption">
+    Number of guesses remaining: <%= @game.num_wrong_guesses_remaining %>
+  </div>
 
-<div class="container-fluid game-caption">
-  <%= get_hangman_image(@game.num_wrong_guesses_remaining) %>
-</div>
+  <div class="container-fluid game-caption">
+    <%= get_hangman_image(@game.num_wrong_guesses_remaining) %>
+  </div>
 
-<% if @game.user_won == nil %>
-  <%= get_keyboard %>
-<% else %>
-  <%= get_game_over_banner %>
+  <% if @game.user_won == nil %>
+    <%= get_keyboard %>
+  <% else %>
+    <%= get_game_over_banner %>
+  <% end %>
+
+  <div class="container-fluid link-row">
+    <%= link_to 'Back', games_path %>
+  </div>
 <% end %>
-
-<div class="container-fluid link-row">
-  <%= link_to 'Back', games_path %>
-</div>

@@ -10,12 +10,6 @@ class GamesController < ApplicationController
   # GET /games/1
   # GET /games/1.json
   def show
-    respond_to do |format|
-      if (@game.user_won == nil) && (!current_user || @game.user != current_user) 
-        format.html { redirect_to games_url, alert: 'You are not allowed to play other users\' unfinished games.' }
-        format.json { head :no_content }
-      end
-    end
   end
 
   # GET /games/new
