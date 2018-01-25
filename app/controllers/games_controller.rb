@@ -10,6 +10,12 @@ class GamesController < ApplicationController
   # GET /games/1
   # GET /games/1.json
   def show
+    respond_to do |format|
+      if (@game.user_won == nil) && (!current_user || @game.user != current_user) 
+        format.html { redirect_to games_url, alert: 'You are not allowed to play other users\' unfinished games.' }
+        format.json { head :no_content }
+      end
+    end
   end
 
   # GET /games/new
@@ -58,9 +64,8 @@ class GamesController < ApplicationController
   # DELETE /games/1
   # DELETE /games/1.json
   def destroy
-    @game.destroy
     respond_to do |format|
-      format.html { redirect_to games_url, notice: 'Game was successfully destroyed.' }
+      format.html { redirect_to games_url, alert: 'You are not allowed to delete games.' }
       format.json { head :no_content }
     end
   end
