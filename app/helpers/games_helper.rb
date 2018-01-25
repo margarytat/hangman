@@ -43,7 +43,7 @@ module GamesHelper
   def get_game_over_banner 
     if @game.user_won != nil 
       extra_class = "user-lost-banner"
-      caption = "You lost!"
+      caption = "You lost! The word was \"#{@game.word}\"."
       if @game.user_won == true 
         extra_class = "user-won-banner"
         caption = "You won!"

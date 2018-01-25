@@ -1,20 +1,33 @@
- <% if (@game.user_won == nil) && (!current_user || @game.user != current_user)  %> 
+ <% if @game.user_won == nil && @game.user != nil && (current_user == nil || @game.user != current_user)  %> 
 
   <div class="alert alert-danger fade in">
       <a href="#" class="close" data-dismiss="alert">&times;</a>
       You are not allowed to finish other users' games!
   </div>
  <% else %>
-  <div class="container-fluid game-caption">
-    <div class="panel panel-default">
+    <div class="panel panel-default game-caption word-panel">
       <div class="panel-body">
         Word:
-        <div class="container page-content">
-          <%= get_word_chars_display %>
+        <div class="container page-content word-row">
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <tbody>
+                <tr>
+                  <% @game.word.each_char do |c|%>
+                    <% lbl = "_" %>
+                    <% if (c.to_s.match /[^a-zA-Z]/ ) || (@game.current_guesses.include? c.to_s.downcase) %>
+                      <% lbl = c.to_s %>
+                    <% end %>
+                    <td><%= lbl %></td>
+                  <% end %>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+
 
   <div class="container-fluid game-caption">
     Number of guesses remaining: <%= @game.num_wrong_guesses_remaining %>
