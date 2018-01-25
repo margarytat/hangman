@@ -3,6 +3,7 @@
 <table class="table">
   <thead>
     <tr>
+      <th>Id</th>
       <th>User</th>
       <th>Word</th>
       <th>User won</th>
@@ -14,6 +15,7 @@
   <tbody>
     <% @games.each do |game| %>
       <tr>
+        <td><%= game.id %>
         <td><%= get_user_name(game.user) %></td>
         <td><%= game.word unless game.user_won == nil %></td>
         <td><%= game.user_won %></td>
