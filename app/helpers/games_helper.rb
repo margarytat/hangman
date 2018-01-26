@@ -6,7 +6,7 @@ module GamesHelper
     return "Guest"
   end
 
-  def get_play_game_section
+  def get_play_game_link(add_label)
     if current_user == nil
       link_to 'New Game', new_game_path
     else
@@ -15,7 +15,9 @@ module GamesHelper
         link_to 'New Game', new_game_path
       else
         content_tag :div do
-          concat (label_tag("You cannot start a new game if you have any in progress."))
+          if add_label == true
+            concat (label_tag("You cannot start a new game if you have any in progress."))
+          end
           concat (content_tag :div, (link_to 'Oldest unfinished game', oldest_unfinished_game), class: "game-caption")
         end
       end
