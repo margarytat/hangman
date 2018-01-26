@@ -63,11 +63,6 @@
 	color: red;
 }
 
-.class-no-padding {
-	padding-left: 0px; important!
-	padding-right: 0px; important!
-}
-
 @media (max-width: 480px) {
 	body {
 		min-width: 100%;

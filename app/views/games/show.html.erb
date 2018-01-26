@@ -4,7 +4,7 @@
       You are not allowed to finish other users' games!
   </div>
  <% else %>
-  <div class="container class-no-padding">Game <%= @game.id %> <span style="float:right"># guesses remaining: <%= @game.num_wrong_guesses_remaining %></span></div>
+  <div>Game <%= @game.id %> <span style="float:right"># guesses remaining: <%= @game.num_wrong_guesses_remaining %></span></div>
 
   <%= get_word_chars_display %>
 
@@ -20,7 +20,7 @@
     <%= get_hangman_image(@game.num_wrong_guesses_remaining) %>
   </div>
 
-  <div class="container link-row">
+  <div class="link-row">
     <% if @game.user_won != nil %>
       <%= link_to 'New Game', new_game_path %> |
     <% end %>
