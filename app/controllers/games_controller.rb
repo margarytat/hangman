@@ -26,6 +26,7 @@ class GamesController < ApplicationController
     @game = Game.new
     @game.user_id = params[:user_id]
     @game.num_wrong_guesses_remaining = Game.MAX_NUM_WRONG_GUESSES
+    @game.set_word(params[:selected_word_source])
 
     respond_to do |format|
 
@@ -72,6 +73,6 @@ class GamesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def game_params
-      params.permit(:id, :user_id, :guess, :authenticity_token, :_method)
+      params.permit(:selected_word_source, :id, :user_id, :guess, :authenticity_token, :_method)
     end
 end

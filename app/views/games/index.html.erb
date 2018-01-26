@@ -6,9 +6,9 @@
       <th>Id</th>
       <th>User</th>
       <th>Word</th>
-      <th>User won</th>
-      <th># wrong guesses</th>
-      <th colspan="3"></th>
+      <th>Result</th>
+      <th>Wrong guesses</th>
+      <th></th>
     </tr>
   </thead>
 
@@ -18,7 +18,7 @@
         <td><%= game.id %>
         <td><%= get_user_name(game.user) %></td>
         <td><%= game.word unless game.user_won == nil %></td>
-        <td><%= game.user_won %></td>
+        <td><%= get_result(game) %></td>
         <td><%= (Game.MAX_NUM_WRONG_GUESSES - game.num_wrong_guesses_remaining) %></td>
         <td>
           <% if (game.user_won != nil) || (current_user && game.user == current_user) %>

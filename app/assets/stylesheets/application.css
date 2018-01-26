@@ -68,11 +68,6 @@
 	padding-right: 0px; important!
 }
 
-.key {
-	margin-left: 2px; important!
-	margin-right: 2px; important!
-}
-
 @media (max-width: 480px) {
 	body {
 		min-width: 100%;

@@ -14,6 +14,18 @@ module GamesHelper
     hidden_field_tag :user_id, uid
   end
 
+  def get_word_source_selector
+    select_tag 'selected_word_source', options_for_select(::Services::WordProvider.providers)
+  end
+
+  def get_result(game)
+    if game.user_won == true
+      content_tag :div, "Win", class: "user-won-banner"
+    elsif game.user_won == false
+      content_tag :div, "Loss", class: "user-lost-banner"
+    end
+  end
+
   def get_word_chars_display
     content_tag :table, class: "table-bordered page-content" do
       content_tag :tbody do

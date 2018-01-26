@@ -7,17 +7,16 @@ class Game < ApplicationRecord
 
   validates :word, presence: true
   validates :num_wrong_guesses_remaining, presence: true
-  
-  def self.MAX_NUM_WRONG_GUESSES 
+
+  def self.MAX_NUM_WRONG_GUESSES
     10
   end
 
-  def initialize
-    super
-    self.word = ::Services::WordProvider.random_word[0].downcase
+  def set_word(word_source)
+    self.word = ::Services::WordProvider.random_word(word_source)[0].downcase
   end
 
-  def process_guess(guess) 
+  def process_guess(guess)
     if self.user_won == nil
       # ignore duplicate guesses
       if !self.current_guesses.include? guess.to_s.downcase
@@ -28,15 +27,15 @@ class Game < ApplicationRecord
       end
 
       num_hidden_letters = 0
-      self.word.downcase.each_char do |c| 
+      self.word.downcase.each_char do |c|
         if (c.to_s.match /[a-zA-Z]/ ) && (!self.current_guesses.include? c.to_s.downcase)
           num_hidden_letters += 1
         end
       end
 
-      if self.num_wrong_guesses_remaining == 0 
+      if self.num_wrong_guesses_remaining == 0
         self.user_won = false
-      elsif num_hidden_letters == 0 
+      elsif num_hidden_letters == 0
         self.user_won = true
       end
     end

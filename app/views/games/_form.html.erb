@@ -8,6 +8,10 @@
     <%= label_tag "caption", "Play as #{get_user_name(current_user)}" %>
   <div>
 
+  <div class="game-caption">
+    <%=  get_word_source_selector %>
+  </div>
+
   <div class="actions game-caption">
     <input type="submit" value="Start">
   </div>
