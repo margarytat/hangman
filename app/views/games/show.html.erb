@@ -1,39 +1,21 @@
- <% if @game.user_won == nil && @game.user != nil && (current_user == nil || @game.user != current_user)  %> 
-
+ <% if @game.user_won == nil && @game.user != nil && (current_user == nil || @game.user != current_user)  %>
   <div class="alert alert-danger fade in">
       <a href="#" class="close" data-dismiss="alert">&times;</a>
       You are not allowed to finish other users' games!
   </div>
  <% else %>
-    <div class="panel panel-default game-caption word-panel">
-      <div class="panel-body">
-        Word:
-        <div class="container page-content word-row">
-          <div class="table-responsive">
-            <table class="table table-bordered">
-              <tbody>
-                <tr>
-                  <% @game.word.each_char do |c|%>
-                    <% lbl = "_" %>
-                    <% if (c.to_s.match /[^a-zA-Z]/ ) || (@game.current_guesses.include? c.to_s.downcase) %>
-                      <% lbl = c.to_s %>
-                    <% end %>
-                    <td><%= lbl %></td>
-                  <% end %>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
 
+  <div class="container page-content">
+    Word:
+  </div>
 
-  <div class="container-fluid game-caption">
+  <%= get_word_chars_display %>
+
+  <div class="container game-caption">
     Number of guesses remaining: <%= @game.num_wrong_guesses_remaining %>
   </div>
 
-  <div class="container-fluid game-caption">
+  <div class="container game-caption">
     <%= get_hangman_image(@game.num_wrong_guesses_remaining) %>
   </div>
 
@@ -43,7 +25,20 @@
     <%= get_game_over_banner %>
   <% end %>
 
-  <div class="container-fluid link-row">
+  <div class="container link-row">
+    <% if @game.user_won != nil %>
+      <%= link_to 'New Game', new_game_path %> |
+    <% end %>
     <%= link_to 'Back', games_path %>
   </div>
 <% end %>
+
+<script type="text/javascript">
+
+// $(document).onkeydown(function(e){
+//   var evtobj=window.event? event : e
+//   var unicode=evtobj.charCode? evtobj.charCode : evtobj.keyCode
+//   var actualkey=String.fromCharCode(unicode)
+//  });
+</script>
+

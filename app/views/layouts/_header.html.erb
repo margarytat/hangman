@@ -1,5 +1,5 @@
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class=container-fluid> 
+    <div class=container-fluid>
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu-options">
           <span class="sr-only">Toggle navigation</span>
@@ -11,7 +11,7 @@
       </div> <!-- end .navbar-header -->
 
       <div class="collapse navbar-collapse" id="menu-options">
-        <ul class="nav navbar-nav navbar-right"> 
+        <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Home", root_path %></li>
         <li><%= link_to 'New Game', new_game_path %></li>
           <% if user_signed_in? %>
@@ -20,7 +20,7 @@
           <% else %>
             <li><%= link_to "Sign in", new_user_session_path %></li>
           <% end %>
-        </ul> 
+        </ul>
       </div> <!-- /.navbar-collapse -->
     </div> <!-- end .container-fluid -->
   </nav> <!-- end nav -->

@@ -12,11 +12,9 @@
 
   <body>
     <%= render 'layouts/header' %>
-    <div class="container-fluid">
+    <div class="container page-content">
       <%= render 'layouts/messages' %>
-      <div class="page-content">
-        <%= yield %>
-      </div>
+      <%= yield %>
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

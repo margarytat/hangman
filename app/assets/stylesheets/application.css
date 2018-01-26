@@ -17,10 +17,11 @@
  body {
 	font-family: 'Roboto', sans-serif;
 	font-size: medium;
+	margin-top:70px;
 }
 
- .alert, .page-content {
-	margin-top: 25px;
+ .page-content {
+	margin-top: 20px;
 }
 
 .game-caption {
@@ -50,16 +51,17 @@
 	color: red;
 }
 
-.td {
+.word-letter {
+	width: 40px;
+	height: 40px;
 	font-size: large;
 	text-align: center;
 }
 
 @media (max-width: 480px) {
 	body {
-	min-width: 100%;
-	margin-left: 0px;
-	margin-right: 0px;
+		min-width: 100%;
+		margin-left: 0px;
+		margin-right: 0px;
 	}
-
 }
