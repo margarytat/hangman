@@ -6,6 +6,22 @@ module GamesHelper
     return "Guest"
   end
 
+  def get_play_game_section
+    if current_user == nil
+      link_to 'New Game', new_game_path
+    else
+      oldest_unfinished_game = Game.find_by(user_id: current_user, user_won: nil)
+      if oldest_unfinished_game == nil
+        link_to 'New Game', new_game_path
+      else
+        content_tag :div do
+          concat (label_tag("You cannot start a new game if you have any in progress."))
+          concat (content_tag :div, (link_to 'Oldest unfinished game', oldest_unfinished_game), class: "game-caption")
+        end
+      end
+    end
+  end
+
   def get_hidden_tag_w_user_id
     uid = nil
     if current_user
