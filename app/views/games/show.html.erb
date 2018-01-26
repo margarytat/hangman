@@ -4,26 +4,21 @@
       You are not allowed to finish other users' games!
   </div>
  <% else %>
-
-  <div class="container page-content">
-    Word:
-  </div>
+  <div class="container class-no-padding">Game <%= @game.id %> <span style="float:right"># guesses remaining: <%= @game.num_wrong_guesses_remaining %></span></div>
 
   <%= get_word_chars_display %>
 
-  <div class="container game-caption">
-    Number of guesses remaining: <%= @game.num_wrong_guesses_remaining %>
+  <div class="page-content">
+    <% if @game.user_won == nil %>
+      <%= get_keyboard %>
+    <% else %>
+      <%= get_game_over_banner %>
+    <% end %>
   </div>
 
-  <div class="container game-caption">
+  <div class="container page-content">
     <%= get_hangman_image(@game.num_wrong_guesses_remaining) %>
   </div>
-
-  <% if @game.user_won == nil %>
-    <%= get_keyboard %>
-  <% else %>
-    <%= get_game_over_banner %>
-  <% end %>
 
   <div class="container link-row">
     <% if @game.user_won != nil %>

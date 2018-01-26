@@ -36,14 +36,6 @@ module GamesHelper
     end
   end
 
-  def get_keyboard
-    content_tag :div, class: "container-fluid" do
-      concat (get_keyboard_row([:Q, :W, :E, :R, :T, :Y, :U, :I, :O, :P]))
-      concat (get_keyboard_row([:A, :S, :D, :F, :G, :H, :J, :K, :L]))
-      concat (get_keyboard_row([:Z, :X, :C, :V, :B, :N, :M]))
-    end
-  end
-
   def get_game_over_banner
     if @game.user_won != nil
       extra_class = "user-lost-banner"
@@ -57,10 +49,20 @@ module GamesHelper
     end
   end
 
+  def get_keyboard
+    content_tag :table do
+        content_tag :tbody do
+          concat (get_keyboard_row([:Q, :W, :E, :R, :T, :Y, :U, :I, :O, :P]))
+          concat (get_keyboard_row([:A, :S, :D, :F, :G, :H, :J, :K, :L]))
+          concat (get_keyboard_row([:Z, :X, :C, :V, :B, :N, :M]))
+      end
+    end
+  end
+
   private
 
   def get_keyboard_row( labels)
-    content_tag :div, class: "row key-row" do
+    content_tag :tr, class: "key-row" do
       labels.each do |i|
         concat (get_button_cell(i.to_s))
       end
@@ -75,7 +77,7 @@ module GamesHelper
     end
 
     css_class = "btn btn-info #{extra_class}"
-    content_tag :div, class: "col-sm-1" do
+    content_tag :td do
       concat (button_to str, { action: "update", :guess => str}, {method: :patch, remote: true, class: css_class, disabled: (@game.current_guesses.include? str.downcase)})
     end
   end

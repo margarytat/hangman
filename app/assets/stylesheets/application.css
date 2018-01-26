@@ -20,13 +20,25 @@
 	margin-top:70px;
 }
 
- .page-content {
+.page-content {
 	margin-top: 20px;
+}
+
+.page-body {
+	margin-left: 20px;
+	margin-right: 20px;
 }
 
 .game-caption {
 	margin-top: 20px;
 	margin-bottom: 20px;
+}
+
+.word-letter {
+	width: 40px;
+	height: 40px;
+	font-size: large;
+	text-align: center;
 }
 
 .link-row {
@@ -51,11 +63,14 @@
 	color: red;
 }
 
-.word-letter {
-	width: 40px;
-	height: 40px;
-	font-size: large;
-	text-align: center;
+.class-no-padding {
+	padding-left: 0px; important!
+	padding-right: 0px; important!
+}
+
+.key {
+	margin-left: 2px; important!
+	margin-right: 2px; important!
 }
 
 @media (max-width: 480px) {
