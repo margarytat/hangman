@@ -30,7 +30,8 @@ gem 'json'
 gem 'bootstrap-sass', '~> 3.3'
 gem 'bootswatch-rails'
 gem 'devise'
-gem 'wordnik'
+# gem 'wordnik'
+
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
@@ -46,6 +47,9 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+
+  gem 'rspec-rails'
+  gem 'shoulda-matchers'
 end
 
 group :development do

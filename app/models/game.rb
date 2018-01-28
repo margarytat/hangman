@@ -1,4 +1,3 @@
-
 class Game < ApplicationRecord
   belongs_to :user, optional: true
   #  when user closes account, there are 2 options for their games:
